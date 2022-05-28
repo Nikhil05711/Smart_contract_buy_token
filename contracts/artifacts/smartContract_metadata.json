@@ -1,0 +1,487 @@
+{
+	"compiler": {
+		"version": "0.8.13+commit.abaa5c0e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "burningAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amountAfterBurning",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "ownerSurplus",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "BNBchargedByAdmin",
+						"type": "uint256"
+					}
+				],
+				"name": "buyTokenDetails",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "AdminAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "buyTokenDetailsAddresses",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "ownerInitiative",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "BNB",
+						"type": "uint256"
+					}
+				],
+				"name": "swapTokenBNB",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "AdminAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "Coin",
+				"outputs": [
+					{
+						"internalType": "contract Token",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "amountAfterBurning",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "burningAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "buyInfo",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "ID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "buyTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "purchaseToken",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "burnToken",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "userGets",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "ownerSurplus",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "BNBchargedByAdmin",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "buyToken",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "getIdsOfUser",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract Token",
+						"name": "_Coin",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_adminAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "initialized",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "ownerSurplusToAdmin",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_admin",
+						"type": "address"
+					}
+				],
+				"name": "setAdminAddress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalInvesters",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/smartContract.sol": "smartContract"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Token/ERC20.sol": {
+			"keccak256": "0x92a11234645dcc0267f709fc8e8d81bb3ed79d5262ba68c2efa7c630b98679d7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ba506d12f8058e18a3b19c37ce42cba7f1927783f2ad00b670a9c88695fa5073",
+				"dweb:/ipfs/Qme2QhYXVrwbrvZaykLZ2nbT5QcReHyNgNXGuSpjLMcQPH"
+			]
+		},
+		"contracts/Token/IERC20.sol": {
+			"keccak256": "0x0ef6c69702327fe6ab27269079182cbeac9b5dab4c879362a5beaf7a6459d7fc",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e3a2b8ac49673e94d4f0b5f8f4a853cc2002279f221add07a1569a3fec679eb9",
+				"dweb:/ipfs/QmTB3o4f2dJxuhMxxFme9hoQa1WhAPmajZcVjfEbQKCkHD"
+			]
+		},
+		"contracts/Token/Token.sol": {
+			"keccak256": "0xb3b8a5ed3f868073ee7f37722244939166d92d068b4e1e64750c913fe07d3502",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://84f0d3d90101eb873413a23f2528f088c561efcb19f91082f0aa1af57eb40c0b",
+				"dweb:/ipfs/QmUtGQmbR9TJTyjMdTaxesyGwn1QtCQYDob1tCTE3DBcqo"
+			]
+		},
+		"contracts/Token/extensions/IERC20Metadata.sol": {
+			"keccak256": "0x8d35471d5a8a07d694ed2ad960d0c052bf8ee1d7f94bc976c6f79e38f0fbb931",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://68e04d5e73958daa68b0c2664fa5f39a248a2a9985dd5d7689fc3901409ed61c",
+				"dweb:/ipfs/QmdnDhFykbADySzPZqSDJYZSAcPoxjyz3YV3SpufSLJG1A"
+			]
+		},
+		"contracts/Token/utils/Context.sol": {
+			"keccak256": "0xbba811245126792a921117c0fc33ec191dc54864b587fb002249cf12b40855c4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://aca987cd0ff47ee700146a11ab41ed5072a418059da3c09ef1d1e3565518b51a",
+				"dweb:/ipfs/QmZryNp7HTYD7cvHqMKcuSuiWhFapeHEZnAG4UWvYhbxNy"
+			]
+		},
+		"contracts/Token/utils/Ownable.sol": {
+			"keccak256": "0x4d6ab5c5e752103970c383c37533bb945fccf67db15f40e082296a4ef36d76de",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2321454a4f10b3dbcc7b2b46e2a1ea5eecc0f4f9dd6373da3f7eca5d5aa6790e",
+				"dweb:/ipfs/QmSZrBRVmM7virMmDUm65yeMjvc8r3qzoFEXQsghx7Wx1d"
+			]
+		},
+		"contracts/Token/utils/SafeMath.sol": {
+			"keccak256": "0x8a9923d3e16f1aa82e04ce86e0defe7ead42c6cdcad11f2f2278ac5defc4fd92",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f625e0ba6597ec11a94e38955a5f8beb3d2b15b5d666b31e6317cb9587d2d3d7",
+				"dweb:/ipfs/Qmf4ybCakmYbDmPEC1PvReS1uwz5djsPA7E7ThhPrjpyWE"
+			]
+		},
+		"contracts/smartContract.sol": {
+			"keccak256": "0xa21634743a2d3093f737fe4fcb0eb8ef486174f796a1f37e1d192c45cf4e2798",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://81002d37a0d8cc2836e481c1b2188b9668d129e10ecfe10bef00f0289b4041b3",
+				"dweb:/ipfs/QmXxRpw3pJTzrAvqaQvVQmSQJ1Yy2hpVbov8yTqMoU9JpS"
+			]
+		}
+	},
+	"version": 1
+}
