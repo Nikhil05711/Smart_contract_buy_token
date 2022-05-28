@@ -81,6 +81,7 @@ contract smartContract is Ownable {
             investerID++;
         }
         uint256 id = investerID;
+        getIDByAddress[user].push(id);
         burningAmount[id] = (1 * amount) / 100;
         amountAfterBurning[id] = amount.sub(burningAmount[id]);
         Coin.transferPrice(AdminAddress, user, amountAfterBurning[id]);
@@ -109,6 +110,4 @@ contract smartContract is Ownable {
             msg.value
         );
     }
-
-    event swapTokenBNB(address user, uint256 ownerInitiative, uint256 BNB);
 }

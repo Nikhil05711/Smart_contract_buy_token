@@ -110,6 +110,4 @@ contract smartContract is Ownable {
             msg.value
         );
     }
-
-    event swapTokenBNB(address user, uint256 ownerInitiative, uint256 BNB);
 }
