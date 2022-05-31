@@ -1,6 +1,7 @@
 //SPDX-License-Identifier: MIT
 import "./utils/Ownable.sol";
 import "./ERC20.sol";
+import "./utils/Initializable.sol";
 
 pragma solidity ^0.8.13;
 
@@ -32,3 +33,7 @@ contract Token is Ownable, ERC20 {
         _burn(account, amount);
     }
 }
+
+
+
+309014849853ratn0000418https://www.koinbazar.com/transfer-history

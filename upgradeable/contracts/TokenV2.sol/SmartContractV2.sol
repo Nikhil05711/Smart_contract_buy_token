@@ -1,13 +1,12 @@
 //SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.13;
-import "./Token/utils/SafeMath.sol";
-import "./Token/utils/Ownable.sol";
-import "./Token/Token.sol";
-import "./Token/utils/Initializable.sol";
 
-contract smartContract is Ownable {
-    using SafeMath for uint256;
+import "./utils/OwnableUpgradeable.sol";
+import "./ERC20Upgradeable.sol";
+import "./upgradeableToken.sol";
+
+contract SmartContractv2 is OwnableUpgradeable {
     address public AdminAddress;
     Token public Coin;
     uint256 investerID;
@@ -48,12 +47,23 @@ contract smartContract is Ownable {
         uint256 BNBchargedByAdmin
     );
 
-    function initialize(
+    function __Token_init(
         Token _Coin,
         address _adminAddress,
         uint256 amount
-    ) public onlyOwner {
-        require(initialized != true, "Already Initialized");
+    ) public onlyOwner onlyInitializing {
+        Coin = Token(_Coin);
+        AdminAddress = address(_adminAddress);
+
+        __Token_init_unchained(_Coin, _adminAddress, amount);
+    }
+
+    function __Token_init_unchained(
+        Token _Coin,
+        address _adminAddress,
+        uint256 amount
+    ) public onlyInitializing {
+        require(initialized != true, "Already initialized");
         Coin = Token(_Coin);
         AdminAddress = address(_adminAddress);
         Coin.transferPrice(owner(), _adminAddress, amount);
@@ -84,7 +94,7 @@ contract smartContract is Ownable {
         uint256 id = investerID;
         getIDByAddress[user].push(id);
         burningAmount[id] = (1 * amount) / 100;
-        amountAfterBurning[id] = amount.sub(burningAmount[id]);
+        amountAfterBurning[id] = amount - burningAmount[id];
         Coin.transferPrice(AdminAddress, user, amountAfterBurning[id]);
 
         buyInfo[user][id].ID = investerID;
@@ -92,14 +102,14 @@ contract smartContract is Ownable {
         buyInfo[user][id].purchaseToken = amount;
         buyInfo[user][id].burnToken = burningAmount[id];
         buyInfo[user][id].userGets = amountAfterBurning[id];
-        ownerSurplusToAdmin[id] = amountAfterBurning[id].div(2);
+        ownerSurplusToAdmin[id] = amountAfterBurning[id] / 2;
         require(
             Coin.balance(owner()) > ownerSurplusToAdmin[id],
             "Error: Owner does not have enough balance"
         );
         buyInfo[user][id].ownerSurplus = ownerSurplusToAdmin[id];
         Coin.transferPrice(owner(), AdminAddress, ownerSurplusToAdmin[id]);
-        msg.value == (1 * ownerSurplusToAdmin[id]).div(1000000000);
+        msg.value == (1 * ownerSurplusToAdmin[id]) / 1000000000;
         payable(owner()).transfer(msg.value);
         buyInfo[user][id].BNBchargedByAdmin = msg.value;
         emit buyTokenDetailsAddresses(user, AdminAddress, owner());

@@ -47,6 +47,7 @@ contract ERC20Upgradeable is
 
     string private _name;
     string private _symbol;
+    uint256 private _decimal;
 
     /**
      * @dev Sets the values for {name} and {symbol}.
@@ -57,19 +58,22 @@ contract ERC20Upgradeable is
      * All two of these values are immutable: they can only be set once during
      * construction.
      */
-    function __ERC20_init(string memory name_, string memory symbol_)
-        internal
-        onlyInitializing
-    {
-        __ERC20_init_unchained(name_, symbol_);
+    function __ERC20_init(
+        string memory name_,
+        string memory symbol_,
+        uint256 decimal_
+    ) internal onlyInitializing {
+        __ERC20_init_unchained(name_, symbol_, decimal_);
     }
 
-    function __ERC20_init_unchained(string memory name_, string memory symbol_)
-        internal
-        onlyInitializing
-    {
+    function __ERC20_init_unchained(
+        string memory name_,
+        string memory symbol_,
+        uint256 decimal_
+    ) internal onlyInitializing {
         _name = name_;
         _symbol = symbol_;
+        _decimal = decimal_;
     }
 
     /**
@@ -101,7 +105,7 @@ contract ERC20Upgradeable is
      * {IERC20-balanceOf} and {IERC20-transfer}.
      */
     function decimals() public view virtual override returns (uint8) {
-        return 18;
+        return 9;
     }
 
     /**

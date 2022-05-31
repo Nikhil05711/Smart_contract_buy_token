@@ -12,6 +12,18 @@ contract Token is OwnableUpgradeable, ERC20Upgradeable {
     //     _mint(owner(), _totalSupply);
     // }
 
+    function __Token_init(uint256 totalSupply_) internal onlyInitializing {
+        __Token_init_unchained(totalSupply_);
+    }
+
+    function __Token_init_unchained(uint256 totalSupply_)
+        internal
+        onlyInitializing
+    {
+        _totalSupply = totalSupply_;
+        _mint(owner(), _totalSupply);
+    }
+
     function balance(address account) public view returns (uint256) {
         return balanceOf(account);
     }
